@@ -1,3 +1,28 @@
+<?php
+session_start(); 
+
+if(!isset($_SESSION["username"]))
+{
+    header("Location:../project/header.php");
+
+}
+$conn = mysqli_connect('localhost','root','','project');
+// Check connection
+
+$username = $_SESSION["username"];
+$id_query = "select id from user where username='$username'";
+$id_result = mysqli_query($conn, $id_query);
+$id_array = mysqli_fetch_assoc($id_result);
+$id = $id_array['id'];
+
+$user_query = "select student_usn, name,room_no, sem, branch from user_details where id='$id'";
+$user_result = mysqli_query($conn, $user_query);
+$user_array = mysqli_fetch_assoc($user_result);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles/dbms.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
 
@@ -23,8 +48,8 @@
             </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="dbms.php"><i class="fa fa-fw fa-home"></i>Home</i></a>
-                <a class="nav-item nav-link" href="user.php"><i class="fa fa-fw fa-user"></i>User</i></a>
+                <a class="nav-item nav-link" href="home.php"><i class="fa fa-fw fa-home"></i>Home</i></a>
+                <a class="nav-item nav-link" href="user.php"><i class="fa fa-fw fa-user"></i><?php echo $username ?></i></a>
                 <a class="nav-item nav-link" href="header.php"><i class="fa fa-fw fa-power-off"></i>Logout</i></a>
             </div>
         </div>
@@ -32,28 +57,30 @@
 
     <br>
     <h1 style="text-align:center">Welcome</h1>
-    <h3 style="text-align:center">NAME</h3>
-    <img src="happy.png"   style="margin-left: auto; margin-right: auto; width:300px ; height:300px;" class="center">
+    <h3 style="text-align:center"><?php echo $user_array['name'] ?></h3>
+    <link rel="stylesheet" type="text/css" href="styles/dbms.css">
+    <center><div class="pic"><img src="happy.png"></div></center>
     <br>
     <br>
-    <h5 style="text-align:center">USN: <br>Room Number: <br>Semester:<br>Branch:</h5>
-
-
-
-
-
-
-
-
+    <div class="user-info" style="text-align:center; font-size:18px;">
+        <p>USN: <?php echo $user_array['student_usn'] ?></p>
+        <p>Room no: <?php echo $user_array['room_no'] ?></p>
+        <p>SEM: <?php echo $user_array['sem'] ?></p>
+        <p>Branch: <?php echo $user_array['branch'] ?></p>
+    </div>
+    
 
 
     <br>
-     <!-- Footer -->
-     <div>
-        <footer class="page-footer font-small-blue bg-dark">
+      <!-- Footer -->
+      <div>
+        <footer class="page-footer bg-dark">
             <div>
-                <p style=" color:white" class="h6 text-center footer-copyright p-4">Crafted with <span style="color: deeppink">Love</span></p>
-                <p style="color:white";> &nbsp;&nbsp;Contact Us :<br> &nbsp;&nbsp;Email : dsatmmess@gmail.com &nbsp;&nbsp;    Phone number : 1234567890</p>         
+                <p style="color:white" class="h6 text-center footer-copyright p-4">Crafted with <span style="color: deeppink">Love</span></p>
+                <div class="contact-footer">
+                    <span>Contact Us</span>
+                    <span>Email : dsatmmess@gmail.com Phone number : 1234567890</span>
+                </div>
             </div>
         </footer>
     </div>
