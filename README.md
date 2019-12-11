@@ -1,2 +1,2 @@
 # dbms-messfeedback
-login to the home page through the header file and see the basic functionalities
+Basic website using Html , css , javascript , php and database for storing user information.
