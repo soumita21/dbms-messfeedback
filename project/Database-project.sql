@@ -271,7 +271,7 @@ INSERT INTO `user` (`id`, `usn`, `username`, `password`) VALUES
 (1, '1dt17cs096', 'Soumita', 'aaaaa'),
 (2, '1dt17cs086', 'Shamanth', 'aaaaa'),
 (3, '1dt17cs063', 'Pooja', 'aaaaa'),
-(6, '1dt17ec001', 'Mimi', 'aaaaa\r\n'),
+(6, '1dt17ec001', 'Mimi', 'aaaaa'),
 (7, '1dt17is007', 'Peter', 'aaaaa');
 
 -- --------------------------------------------------------

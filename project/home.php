@@ -18,19 +18,14 @@ $result4= mysqli_query($conn, $query4);
 $top_b_query = "SELECT a.food_id,a.food_name,b.percentage from food_list a,votes_percentage b where a.food_id=b.food_id and a.food_id BETWEEN 1 and 10 ORDER BY percentage DESC limit 3";
 $top_b = mysqli_query($conn, $top_b_query);
 
-
-
 $top_l_query = "SELECT a.food_id,a.food_name,b.percentage from food_list a,votes_percentage b where a.food_id=b.food_id and a.food_id BETWEEN 11 and 20 ORDER BY percentage DESC limit 3";
 $top_l = mysqli_query($conn, $top_l_query);
-
 
 $top_s_query = "SELECT a.food_id,a.food_name,b.percentage from food_list a,votes_percentage b where a.food_id=b.food_id and a.food_id BETWEEN 21 and 30 ORDER BY percentage DESC limit 3";
 $top_s = mysqli_query($conn, $top_s_query);
 
-
 $top_d_query = "SELECT a.food_id,a.food_name,b.percentage from food_list a,votes_percentage b where a.food_id=b.food_id and a.food_id BETWEEN 31 and 40 ORDER BY percentage DESC limit 3";
 $top_d = mysqli_query($conn, $top_d_query);
-
 
 ?>
 
@@ -66,7 +61,7 @@ $top_d = mysqli_query($conn, $top_d_query);
             </div>
         </div>
     </nav>
-    <!-- <?php echo $_SESSION['user']; ?> -->
+
     <!--Jumbotron-->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -156,11 +151,14 @@ $top_d = mysqli_query($conn, $top_d_query);
 
     <br>
     <br>
+
+    <!--Feedback button-->
     <center>
         <h1 class="display-4">Give quality, service and staff feedback!</h1>
     </center>
     <center><a href="feedback.php"><button class="btn btn-primary fb-btn" style="height:60px;margin:30px; width:300px;" ><h4>Give Feedback</h4></button></a></center>
 
+    <!--Menu card buttons-->
     <hr>
     <div class="btn-center">
         <button class="btn btn-primary menu-btn" id="breakfast-btn">Breakfast</button>
@@ -169,6 +167,7 @@ $top_d = mysqli_query($conn, $top_d_query);
         <button class="btn btn-primary menu-btn" id="dinner-btn">Dinner</button>
     </div>
 
+    <!-- Menu-card -->
     <div id="check" class="container">
         <div class="flex">
             <div class="menu-card" id="menucard-b">
@@ -294,14 +293,14 @@ $top_d = mysqli_query($conn, $top_d_query);
                                 <button type="submit" class="btn btn-block btn-primary">Submit</button>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 <br><br><br>
+
+<!-- Display top item card -->
 
 <div class="container-c">
 <div class="coloumn">
@@ -312,7 +311,7 @@ $top_d = mysqli_query($conn, $top_d_query);
         while($top_b_result=mysqli_fetch_assoc($top_b))
             {
                 ?> 
-               <center><p><?php echo $top_b_result['food_name']; ?></p></center>
+               <center><p><?php echo $top_b_result['food_name']." ".$top_b_result['percentage']."% "?></p></center>
             <?php
             }
          ?>
@@ -326,7 +325,7 @@ $top_d = mysqli_query($conn, $top_d_query);
 
          {
             ?> 
-            <center><p><?php echo $top_l_result['food_name']; ?></p></center>
+            <center><p><?php echo $top_l_result['food_name']." ".$top_l_result['percentage']."% "; ?></p></center>
         <?php
             }
          ?>
@@ -339,7 +338,7 @@ $top_d = mysqli_query($conn, $top_d_query);
         while($top_s_result=mysqli_fetch_assoc($top_s))
             {
                 ?> 
-                <center><p><?php echo $top_s_result['food_name']; ?></p></center>
+                <center><p><?php echo $top_s_result['food_name']." ".$top_s_result['percentage']."% "; ?></p></center>
             <?php
             }
          ?>
@@ -352,16 +351,13 @@ $top_d = mysqli_query($conn, $top_d_query);
         while($top_d_result=mysqli_fetch_assoc($top_d))
             {
                 ?> 
-                <center><p><?php echo $top_d_result['food_name']; ?></p></center>
+                <center><p><?php echo $top_d_result['food_name']." ".$top_d_result['percentage']."% "; ?></p></center>
             <?php
             }
          ?>
   </div>
 </div>
-        </div>
-
-
-    
+        </div>    
 
     <!-- Footer -->
     <div>

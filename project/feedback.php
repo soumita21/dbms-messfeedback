@@ -44,11 +44,15 @@ $show_feedback = mysqli_query($conn, "CALL display_fb");
 
     <div class="fb-container">
         <div class="food-fb">
-            <h3 class="text-fb"><b>Give Feedback</b></h3><hr style="background-color:black; width:370px">
+            <h3 class="text-fb"><b>Give Feedback</b></h3>
+            <hr style="background-color:black; width:370px">
             <form method="POST" action="feedback-server.php">
-              <center><p>Give suggestions about the food quality</p><input type="text" class="feedback-form" placeholder="comment:" name="food_fb" id="comment"></center><br>
-              <center><p>Give suggestions about the service quality</p> <input type="text" class="feedback-form" placeholder="comment:" name="service_fb" id="comment"></center><br>
-              <center><p>Give suggestions about the staff</p> <input type="text" class="feedback-form" placeholder="comment:" name="staff_fb" id="comment"></center>
+                <center>
+                    <p>Give suggestions about the food quality</p><input type="text" class="feedback-form" placeholder="comment:" name="food_fb" id="comment"></center><br>
+                <center>
+                    <p>Give suggestions about the service quality</p> <input type="text" class="feedback-form" placeholder="comment:" name="service_fb" id="comment"></center><br>
+                <center>
+                    <p>Give suggestions about the staff</p> <input type="text" class="feedback-form" placeholder="comment:" name="staff_fb" id="comment"></center>
 
                 <div>
                     <p style="line-height: 70px; text-align: center;"><button type="submit" class="btn btn-primary mb-2">Submit</button>
@@ -57,59 +61,38 @@ $show_feedback = mysqli_query($conn, "CALL display_fb");
         </div>
     </div>
 
-
-
-<table>
-    <tr>User ID</tr>
-        <?php while ($row = mysqli_fetch_array($show_feedback))
-        {
-        ?>
-        <td><?php echo $row["id"]; ?></td>
-        <?php        
-        } 
-        ?>
-      </tr> 
-    <tr>Name </tr>
-    <?php while ($row = mysqli_fetch_array($show_feedback))
-        {
-        ?>
-        <td><?php echo $row["name"]; ?></td>
-        <?php        
-        } 
-        ?>
-    </tr>
-    <tr>food feedback</tr>
-    <?php while ($row = mysqli_fetch_array($show_feedback))
-        {
-        ?>
-        <td><?php echo $row["food_quality"]; ?></td>
-        <?php        
-        } 
-        ?>
+<center>
+    <table>
+        <th>User ID</th>
+        <th>Name </th>
+        <th>Food feedback</th>
+        <th>Fervice feedback</th>
+        <th>Staff feedback</th>
+        <?php while($row = mysqli_fetch_array($show_feedback))
+    {
+    ?>
+        <tr>
+            <td>
+                <?php echo $row["id"]; ?>
+            </td>
+            <td>
+                <?php echo $row["name"]; ?>
+            </td>
+            <td>
+                <?php echo $row["food_quality"]; ?>
+            </td>
+            <td>
+                <?php echo $row["service"]; ?>
+            </td>
+            <td>
+                <?php echo $row["staff_feedback"]; ?>
+            </td>
         </tr>
-    <tr>service feedback</tr>
-    <?php while ($row = mysqli_fetch_array($show_feedback))
-        {
-        ?>
-        <td><?php echo $row["service"]; ?></td>
-        <?php        
-        } 
-        ?>
-        </tr>
-    <tr>staff feedback</tr>
-    <?php while ($row = mysqli_fetch_array($show_feedback))
-        {
-        ?>
-        <td><?php echo $row["staff_feedback"]; ?></td>
-        <?php        
-        } 
-        ?>
-    </tr>
+       <?php
+    }
+            ?>
     </table>
-
-
-</table>
-
+</center>
 
     <br>
     <br>

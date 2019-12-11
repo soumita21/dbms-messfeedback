@@ -1,5 +1,7 @@
 window.onload = function() {
 
+    //To change pic per day
+
     today = new Date();
     day = today.getDay();
 
@@ -7,6 +9,8 @@ window.onload = function() {
     document.getElementById('lunchimg').src = "images/lunch/" + day + ".jpg";
     document.getElementById('snacksimg').src = "images/snack/" + day + ".jpg";
     document.getElementById('dinnerimg').src = "images/dinner/" + day + ".jpg";
+
+    //For changing cards on clicking buttons
 
     document.getElementById("menucard-b").style.display = "initial";
     document.getElementById("menucard-l").style.display = "none";
@@ -44,6 +48,8 @@ window.onload = function() {
 
     });
 }
+
+//To limit the number of checkbox checked
 
 function checkboxlimit() {
     var checkboxes = document.getElementsByName("b-menu[]");
